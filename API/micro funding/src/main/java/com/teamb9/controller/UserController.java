@@ -54,8 +54,6 @@ public class UserController {
 			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
 		UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
 		userDetailsDTO = userService.findUserbyEmail(emailId);
-		logger.info(passwordDTO.getPassword());
-		logger.info(userDetailsDTO.getPassword());
 		if(!userDetailsDTO.getPassword().equals(passwordDTO.getPassword())) {
 			throw new CustomBadRequestException("Invalid login");
 		}
