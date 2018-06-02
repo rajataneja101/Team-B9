@@ -1,5 +1,7 @@
 package com.teamb9.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +52,16 @@ public class ProjectController {
 			@PathVariable(value = "projectId") String projectId) throws CustomInternalServerException {
 		ProjectDTO projectDTO = projectService.fetchProjectDetails(projectId);
 		return projectDTO;
+	}
+	
+	@GetMapping("/getAllProjects")
+	private List<ProjectDTO> getAllProjects() throws CustomInternalServerException {
+		return projectService.fetchAllProjects();
+	}
+	
+	@GetMapping("/getAllOwnerProjects/{userId}")
+	private List<ProjectDTO> getAllOwnerProjects(@PathVariable(value = "userId") String userId) 
+			throws CustomInternalServerException {
+		return projectService.fetchAllOwnerProjects(userId);
 	}
 }

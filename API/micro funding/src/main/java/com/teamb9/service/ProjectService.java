@@ -1,5 +1,7 @@
 package com.teamb9.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +42,29 @@ public class ProjectService {
 			throw new CustomInternalServerException("Something went wrong");
 		}
 	}
+	
+	
+	public List<ProjectDTO> fetchAllProjects() 
+			throws CustomInternalServerException {
+		try {
+			
+			return projectRepository.findAll();
+		} catch(Exception e) {
+			logger.info(e.getMessage());
+			throw new CustomInternalServerException("Something went wrong");
+		}
+	}
+	
+	public List<ProjectDTO> fetchAllOwnerProjects(String userId) 
+			throws CustomInternalServerException {
+		try {
+			
+			return projectRepository.findByUserId(userId);
+		} catch(Exception e) {
+			logger.info(e.getMessage());
+			throw new CustomInternalServerException("Something went wrong");
+		}
+	}
+	
 
 }

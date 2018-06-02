@@ -66,5 +66,26 @@ public class UserController {
 		userResponseDTO.setId(userDetailsDTO.getId());
 		return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
 	}
+	
+	@PostMapping("/fundProject")
+	public ResponseEntity<UserResponseDTO> fundProject(
+			@Valid @RequestBody PasswordDTO passwordDTO,
+			@PathVariable(value = "emailId") String emailId
+			) 
+			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
+		UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+		userDetailsDTO = userService.findUserbyEmail(emailId);
+		if(!userDetailsDTO.getPassword().equals(passwordDTO.getPassword())) {
+			throw new CustomBadRequestException("Invalid login");
+		}
+		UserResponseDTO userResponseDTO = new UserResponseDTO();
+		userResponseDTO.setEmailId(userDetailsDTO.getEmail());
+		userResponseDTO.setFname(userDetailsDTO.getFname());
+		userResponseDTO.setFundingDone(userDetailsDTO.getFundingDone());
+		userResponseDTO.setLname(userDetailsDTO.getLname());
+		userResponseDTO.setUserType(userDetailsDTO.getUserType());
+		userResponseDTO.setId(userDetailsDTO.getId());
+		return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
+	}
 
 }

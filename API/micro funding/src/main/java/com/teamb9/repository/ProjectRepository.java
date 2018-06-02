@@ -1,5 +1,7 @@
 package com.teamb9.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,4 +15,8 @@ public interface ProjectRepository extends JpaRepository<ProjectDTO, Long>  {
     @Query(value="SELECT * FROM project_details where project_id = :projectId",nativeQuery=true
     	    )
     public ProjectDTO findByProjectId(@Param("projectId")String projectId);
+    
+    @Query(value="SELECT * FROM project_details where user_id = :userId",nativeQuery=true
+    	    )
+    public List<ProjectDTO> findByUserId(@Param("userId")String userId);
 }
