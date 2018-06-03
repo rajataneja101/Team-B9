@@ -13,6 +13,7 @@ import com.teamb9.dto.ProjectStepsDTO;
 import com.teamb9.dto.ProjectStepsRequestDTO;
 import com.teamb9.dto.UserDetailsDTO;
 import com.teamb9.exception.CustomInternalServerException;
+import com.teamb9.exception.CustomNotFoundException;
 import com.teamb9.repository.ProjectRepository;
 import com.teamb9.repository.ProjectStepsRepository;
 
@@ -85,6 +86,15 @@ public class ProjectService {
 		} catch(Exception e) {
 			logger.info(e.getMessage());
 			throw new CustomInternalServerException("Something went wrong");
+		}
+	}
+	
+	public void checkProjectAvailability(String projectId)
+			throws CustomNotFoundException, CustomInternalServerException
+	{
+		ProjectDTO projectDTO = projectRepository.findByProjectId(projectId);
+		if(projectDTO == null) {
+			throw new CustomNotFoundException("Project not found");
 		}
 	}
 	
