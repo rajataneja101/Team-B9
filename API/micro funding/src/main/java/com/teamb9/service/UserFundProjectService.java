@@ -30,8 +30,8 @@ public class UserFundProjectService {
 			throws CustomBadRequestException {
 		try {
 		userFundProjectRepository.save(userFundProjectDTO);
-		userFundProjectRepository.updateProjectFunds(userFundProjectDTO.getProjectId());
-		userFundProjectRepository.updateUserFunds(userFundProjectDTO.getUserId());
+		userFundProjectRepository.updateProjectFunds(userFundProjectDTO.getProject());
+		userFundProjectRepository.updateUserFunds(userFundProjectDTO.getUser());
 		}
 		catch(Exception e) {
 			logger.info(e.getMessage());

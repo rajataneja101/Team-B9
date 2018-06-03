@@ -90,6 +90,14 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(globalResponseDTO);
 	}
 	
+	@GetMapping("/fundedProject/{userId}")
+	public List<UserFundProjectDTO> findFundedProjects(
+			@PathVariable(value = "userId") String userId
+			) 
+			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
+		return userService.findFundedProjects(userId);
+	}
+	
 //	@PostMapping("/fundProject")
 //	public ResponseEntity<UserResponseDTO> fundProject(
 //			@Valid @RequestBody PasswordDTO passwordDTO,
