@@ -1,5 +1,7 @@
 package com.teamb9.repository;
 
+import java.util.List;
+
 import javax.persistence.ColumnResult;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
@@ -28,4 +30,8 @@ public interface UserFundProjectRepository extends JpaRepository<UserFundProject
 			+ "WHERE email = :userId",
 	nativeQuery= true)
 	void updateUserFunds(@Param("userId")String userId);
+	
+    @Query(value="SELECT * FROM user_fund_project where user_id = :userId",nativeQuery=true
+    	    )
+    public List<UserFundProjectDTO> findFundedProjects(@Param("userId")String userId);
 }

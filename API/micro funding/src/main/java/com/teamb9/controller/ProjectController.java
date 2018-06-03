@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teamb9.dto.GlobalResponseDTO;
 import com.teamb9.dto.ProjectDTO;
+import com.teamb9.dto.ProjectStepsDTO;
 import com.teamb9.exception.CustomInternalServerException;
 import com.teamb9.service.ProjectService;
 
@@ -63,5 +64,14 @@ public class ProjectController {
 	private List<ProjectDTO> getAllOwnerProjects(@PathVariable(value = "userId") String userId) 
 			throws CustomInternalServerException {
 		return projectService.fetchAllOwnerProjects(userId);
+	}
+	
+	@PostMapping("/steps")
+	private ResponseEntity<GlobalResponseDTO> registerProjectSteps(@RequestBody ProjectStepsDTO projectStepsDTO) 
+			throws CustomInternalServerException{
+		projectService.createProjectSteps(projectStepsDTO);
+		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
+		globalResponseDTO.setMessage("Project registered successfully");
+		return ResponseEntity.status(HttpStatus.CREATED).body(globalResponseDTO);
 	}
 }

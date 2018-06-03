@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.teamb9.dto.UserDetailsDTO;
+import com.teamb9.dto.UserFundProjectDTO;
 import com.teamb9.exception.CustomInternalServerException;
 import com.teamb9.exception.CustomNotFoundException;
+import com.teamb9.repository.UserFundProjectRepository;
 import com.teamb9.repository.UserRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserFundProjectRepository userFundProjectRepository;
 	
 	public List<UserDetailsDTO> getAllUsers(){
 		return userRepository.findAll();
@@ -49,5 +54,18 @@ public class UserService {
 	    if(userRepository.save(userDetailsDTO) == null) {
 	    	throw new CustomInternalServerException("Something went wrong while saving user details");
 	    }
+	}
+	
+	public void checkEmailAvailability(String email)
+			throws CustomNotFoundException, CustomInternalServerException
+	{
+		UserDetailsDTO userDetailsDTO = userRepository.findByEmail(email);
+		if(userDetailsDTO == null) {
+			throw new CustomNotFoundException("User not found");
+		}
+	}
+	
+	public List<UserFundProjectDTO> findFundedProjects(String userId) {
+		return userFundProjectRepository.findFundedProjects(userId);
 	}
 }

@@ -9,15 +9,21 @@ import org.springframework.stereotype.Service;
 
 import com.teamb9.controller.UserController;
 import com.teamb9.dto.ProjectDTO;
+import com.teamb9.dto.ProjectStepsDTO;
+import com.teamb9.dto.ProjectStepsRequestDTO;
 import com.teamb9.dto.UserDetailsDTO;
 import com.teamb9.exception.CustomInternalServerException;
 import com.teamb9.repository.ProjectRepository;
+import com.teamb9.repository.ProjectStepsRepository;
 
 @Service
 public class ProjectService {
 	
 	@Autowired
 	ProjectRepository projectRepository;
+	
+	@Autowired
+	ProjectStepsRepository projectStepsRepository;
 	
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserController.class);
@@ -60,6 +66,22 @@ public class ProjectService {
 		try {
 			
 			return projectRepository.findByUserId(userId);
+		} catch(Exception e) {
+			logger.info(e.getMessage());
+			throw new CustomInternalServerException("Something went wrong");
+		}
+	}
+	
+	public void createProjectSteps(ProjectStepsDTO projectStepsDTO) 
+			throws CustomInternalServerException {
+		try {
+			for (String array : projectStepsDTO.getProjectSteps()){
+				ProjectStepsRequestDTO projectStepsRequestDTO = new ProjectStepsRequestDTO();
+				projectStepsRequestDTO.setProjectId(projectStepsDTO.getProjectId());
+				projectStepsRequestDTO.setProjectSteps(array);
+				projectStepsRepository.save(projectStepsRequestDTO);
+			}
+			
 		} catch(Exception e) {
 			logger.info(e.getMessage());
 			throw new CustomInternalServerException("Something went wrong");
