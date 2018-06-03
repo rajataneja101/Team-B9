@@ -1,3 +1,4 @@
+<?php session_start(); ?> 
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -123,9 +124,14 @@
 							</ul>-->
 						</li>
 						<li><a href="about.html">About us</a></li>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="registration.php">Register</a></li>
-						<li><a href="contact.html">Contact us</a></li>
+						<?php
+						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
+						{ ?>
+							<li><a href="login.php">Login</a></li>
+							<li><a href="registration.php">Register</a></li>
+						<?php } else{ ?>
+							<li><a href="logout.php">Logout</a></li>
+						<?php } ?>
 					</ul>
 				</div>
 

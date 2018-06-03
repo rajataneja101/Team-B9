@@ -1,12 +1,17 @@
 <?php
 include 'constants.php';
+session_start();
+if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
+{ 
+	header('location: index.php');
+}
 ?>
 <!DOCTYPE HTML>
 <html>
 		<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Abramo Nogcci</title>
+	<title>PITSTOP</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Best in class shoes" />
 
@@ -91,7 +96,7 @@ include 'constants.php';
 					<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<div id="content-desktop">
-					<li><div id="fh5co-logo"><a href="index.html"><h3><strong>Abramo Nogcci</strong></h3></a></div></li>
+					<li><div id="fh5co-logo"><a href="index.html"><h3><strong>PITSTOP</strong></h3></a></div></li>
 	</div>
 					</ul>
 					<hr>
@@ -133,10 +138,10 @@ include 'constants.php';
 					<form action="signup.php" method="post">
                     <div class="radio">
                     <div class="col-md-4">
-                        <label><input type="radio" name="userType"  checked="checked">Fund a project</label>
+                        <label><input type="radio" name="userType"  checked="checked" value="normal">Fund a project</label>
                     </div>
                     <div class="col-md-4">
-                        <label><input type="radio" name="userType">Get Funds</label>
+                        <label><input type="radio" name="userType" value="owner">Get Funds</label>
                     </div>
                     </div>
 						<div class="row form-group">
@@ -181,37 +186,12 @@ include 'constants.php';
 
 		</div>
     </div>	
-		<div id="fh5co-started">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Newsletter</h2>
-					<p>Just stay tune for our latest Product. Now you can subscribe</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline" action="newsletter.php" method="post">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" name="email" placeholder="Email" >
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-default btn-block" name="Submit">Subscribe</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-4 fh5co-widget">
-					<h3>Abramo Nogcci</h3>
+					<h3>PITSTOP</h3>
 					<p>Best in its type!</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">

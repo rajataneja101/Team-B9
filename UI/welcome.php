@@ -1,27 +1,3 @@
-<?php session_start();
-if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
-{ 
-	header('location: index.php');
-}
-?>
-
-<style>
-	 html, body, .container-table {
-    height: 100%;
-}
-.container-table {
-    width:100vw;
-  height:150px;
-  border:1px solid black;
-}
-.vertical-center-row {
-   margin:auto;
-  width:30%;
-  padding:63px;
-  text-align:center;
-
-}
-</style>
 <!DOCTYPE HTML>
 <html>
 		<head>
@@ -30,24 +6,6 @@ if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
 	<title>PITSTOP</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Best in class shoes" />
-
-
-
-	<!--
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FreeHTML5.co
-
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -57,10 +15,6 @@ if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
-
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
-
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -112,7 +66,7 @@ if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
 					<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<div id="content-desktop">
-					<li><div id="fh5co-logo"><a href="index.html"><h3><strong>PITSTOP</strong></h3></a></div></li>
+					<li><div id="fh5co-logo"><a href="index.php"><h3><strong>PITSTOP</strong></h3></a></div></li>
 	</div>
 					</ul>
 					<hr>
@@ -126,96 +80,30 @@ if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
 						<li><a href="about.html">About us</a></li>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="registration.php">Register</a></li>
+						<li><a href="contact.html">Contact us</a></li>
 						</ul>
 					</div>
 
 				</div>
 
 			</div>
-		</nav>
-
-	<div id="fh5co-contact">
+        </nav>
+        
+        <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/thumb/4/1.jpg);">
+		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<!-- <div class="col-md-5 col-md-push-1 animate-box">
-
-					<div class="fh5co-contact-info">
-						<h3>Contact Information</h3>
-						<ul>
-							<li class="email"><a href="mailto:precious@abramonogcci.com">admin@abramonogcci.com</a></li>
-
-						</ul>
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Welcome</h1>
+							<h2>Thank you for registering</h2>
+						</div>
 					</div>
-
-				</div> -->
-				<div class="col-md-6 animate-box">
-					<h3>Login</h3>
-					<form action="signIn.php" method="post">
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="email">Email</label>
-								<input type="text" name="email" class="form-control" placeholder="Your email address">
-							</div>
-						</div>
-
-						<div class="row form-group">
-							<div class="col-md-12">
-								<label for="password">Password</label>
-								<input type="password" name="password" class="form-control" placeholder="Your password">
-							</div>
-						</div>
-						<div class="form-group">
-							<input type="submit" value="Login" class="btn btn-primary">
-						</div>
-
-					</form>
 				</div>
 			</div>
-
 		</div>
-	</div>
-
-	
-	<footer id="fh5co-footer" role="contentinfo">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-4 fh5co-widget">
-					<h3>PITSTOP</h3>
-					<p>Best in its type!</p>
-				</div>
-				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-					<ul class="fh5co-footer-links">
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-					<ul class="fh5co-footer-links">
-						<li><a href="projects.php">Projects</a></li>
-						<li><a href="policy.html">Policy</a></li>
-
-					</ul>
-				</div>
-
-			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12 text-center">
-
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</footer>
+	</header>
 	</div>
 
 	<div class="gototop js-top">
