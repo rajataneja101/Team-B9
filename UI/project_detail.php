@@ -1,41 +1,37 @@
 <?php
-$con = mysql_connect("localhost","root","root");
-$db=mysql_select_db("abramo");
-// Check connection
-  $q="SELECT * FROM shoes";
-$results=mysql_query($q);
-if(!isset($_SESSION['products']))
-{
-$_SESSION['products']=array();
+$projectId=$_GET["projectId"];
+session_start();
+include 'constants.php';
+require './vendor/autoload.php';
+
+use GuzzleHttp\Client;
+
+$client = new GuzzleHttp\Client();
+$url = $apiUrl;
+$res = $client->request('GET', $apiUrl."projects/getProjectDetails/".$projectId);
+$project=json_decode($res->getBody(), true);
+?>
+
+<!DOCTYPE HTML>
+<style>
+	/* hide up/down arrows ("spinners") on input fields marked type=number */
+.no-spinners [type='number'] {
+  -moz-appearance:textfield;
 }
 
-  ?>
-<!DOCTYPE HTML>
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
 <html>
-		<head>
+	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Abramo Nogcci</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Best in class shoes" />
-	
-	
-
-	<!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FreeHTML5.co
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -45,11 +41,6 @@ $_SESSION['products']=array();
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
-
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
-	
-	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="css/icomoon.css">
@@ -75,264 +66,163 @@ $_SESSION['products']=array();
 
 	</head>
 	<body>
-		
+
 	<div class="fh5co-loader"></div>
-	 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Want something new?! Upload your own idea</h4>
-        </div>
-        <div class="modal-body">
-          
-         <form method="post" action="upload.php"  enctype="multipart/form-data">
-    <table class="table1">
-    <tr>
-        <td><label style="font-size:18px;">Name</label></td>
-        <td width="30"></td>
-        <td><input type="text" name="first_name" placeholder="Name" required /></td>
-    </tr>
-    <tr>
-        <td><label style="font-size:18px;">Email</label></td>
-        <td width="30"></td>
-        <td><input type="email" name="last_name" placeholder="Email" required /></td>
-    </tr>
-    <tr>
-        <td><label style="font-size:18px;">Select your Image</label></td>
-        <td width="30"></td>
-        <td><input type="file" name="image"  class="btn btn-primary"></td>
-    </tr>
-</table>
-    </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button type="submit" name="Submit" class="btn btn-primary">Upload</button>
-    </div>
-</form>
-        </div>
-             </div>
-      
-    </div>
-  </div>
-  <script type="text/javascript">
-   setTimeout(function() {
-    $('#myModal').modal();
-}, 10000);
-</script>
+
 	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Abramo Nogcci</a></div>
+		<nav class="fh5co-nav" role="navigation">
+			<div class="container">
+				<div class="row">
+					<style type="text/css">
+					   .mobileShow { display: none;}
+					   /* Smartphone Portrait and Landscape */
+					   @media only screen
+					   and (min-device-width : 320px)
+					   and (max-device-width : 480px){ .mobileShow { display: inline;}}
+					</style>
+
+					<div class="col-md-3 col-xs-2">
+						<div class="mobileShow">
+						<div id="fh5co-logo"><a href="index.html">PITSTOP</a></div>
+					</div>
 				</div>
-				<div class="col-md-6 col-xs-6 text-center menu-1">
+
+					<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
-					<li> <!--class="has-dropdown"-->
+						<div id="content-desktop">
+					<li><div id="fh5co-logo"><a href="index.html"><h3><strong>Abramo Nogcci</strong></h3></a></div></li>
+	</div>
+					</ul>
+					<hr>
+						<ul>
+						<li> <!--class="has-dropdown"-->
 							<a href="projects.php">Projects</a>
 							<!--<ul class="dropdown">
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>-->
 						</li>
 						<li><a href="about.html">About us</a></li>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="registration.php">Register</a></li>
-						<li><a href="contact.html">Contact us</a></li>
-					</ul>
-				</div>
-				
-			</div>
-			
-		</div>
-	</nav>
+						<?php
+						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
+						{ ?>
+							<li><a href="login.php">Login</a></li>
+							<li><a href="registration.php">Register</a></li>
+						<?php } else{ ?>
+							<li><a href="logout.php">Logout</a></li>
+						<?php } ?>
+						</ul>
+					</div>
 
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/thumb/4/1.jpg);">
+				</div>
+
+			</div>
+		</nav>
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/thumb/<?php echo $r ?>/1.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Products</h1>
-							<h2>You will be proud to have them!</h2>
+							<h1>Project Details</h1>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
-	
+
 	<div id="fh5co-product">
 		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<span>Cool Stuff</span>
-					<h2>Shoes</h2>
-					
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 animate-box">
+					<div class="owl-carousel owl-carousel-fullwidth product-carousel slides">
+						<div class="item">
+							<div class="active text-center">
+								<figure>
+									<img src="images/product-1.jpg" alt="image1">
+								</figure>
+							</div>
+						</div>
+						<div class="item">
+							<div class="active text-center">
+								<figure>
+									<img src="images/product-2.jpg" alt="image2">
+								</figure>
+							</div>
+						</div>
+						<div class="item">
+							<div class="active text-center">
+								<figure>
+									<img src="images/product-3.jpg" alt="image3">
+								</figure>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="row animate-box">
+						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" >
+							<h2><?php echo $project['projectName']?></h2>
+						</div>
+					</div>
 				</div>
 			</div>
-			
-			 <?php
-			 $array=array();
- while($row = mysql_fetch_assoc($results,MYSQL_ASSOC)) {
-  $array[]=$row;
-  }
-  for($j=0;$j<9;$j++)
-{
-	/*if($j%3==1)
-	{
- 	
-			echo '<div class="row">';
-			
-		}*/
-		?>
-							<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images<?php print $array[$j]['path']?>);">
-							<div class="inner">
-								<p>
-									<?
-									echo "<a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."><i class='icon-eye'></i></a>";
-									?>
-								</p>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="fh5co-tabs animate-box">
+						<ul class="fh5co-tab-nav">
+							<li class="active"><a href="#" data-tab="1"><span class="icon visible-xs"><i class="icon-file"></i></span><span class="hidden-xs">Project Details</span></a></li>
+							<li><a href="#" data-tab="2"><span class="icon visible-xs"><i class="icon-bar-graph"></i></span><span class="hidden-xs">Fundings</span></a></li>
+							<li><a href="#" data-tab="3"><span class="icon visible-xs"><i class="icon-star"></i></span><span class="hidden-xs">Timeline</span></a></li>
+						</ul>
+
+						<!-- Tabs -->
+						<div class="fh5co-tab-content-wrap">
+
+							<div class="fh5co-tab-content tab-content active" data-tab-content="1">
+								<div class="col-md-10 col-md-offset-1">
+									<h2><?php echo $project['projectName']?></h2>
+									<p><?php echo $project['description']?></p>
+									<div class="row">
+										<div class="col-md-6">
+											<h2 class="uppercase">Keep it simple</h2>
+
+										</div>
+										<div class="col-md-6">
+											<h2 class="uppercase">Less is more</h2>
+
+										</div>
+									</div>
+
+								</div>
 							</div>
-						</div>
-						<div class="desc">
-							<h3><?php 
-							echo "<h3><a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."></a>".$array[$j]['name']."</h3>";
-							
-							
-							?></a></h3>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				<?
-				
-				}
-			
-			
-mysql_close();
-?>
+
+							<div class="fh5co-tab-content tab-content" data-tab-content="2">
+								<div class="col-md-10 col-md-offset-1">
+									<h4>Fundings recieved : <?php echo $project['fundingDone']?></h4>
+									<h4>Fundings required : <?php echo $project['fundingRequired']?></h4>
+									<h4>Percentage of project completed : <?php echo ($project['fundingDone']/$project['fundingRequired'])*100?> %</h4>
+								</div>
+							</div>
 
 
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					
-					
-				</div>
-		
-			 <?php
-			
-  for($j=9;$j<18;$j++)
-{
-	
-		?>
-							<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images<?php print $array[$j]['path']?>);">
-							<div class="inner">
-								<p>
-									<?
-									echo "<a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."><i class='icon-eye'></i></a>";
-									?>
-								</p>
-							</div>
 						</div>
-						<div class="desc">
-							<h3><?php 
-							echo "<h3><a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."></a>".$array[$j]['name']."</h3>";
-							
-							
-							?></a></h3>
-							
+						<div class="row animate-box">
+						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" >
+							<p>
+							<form action ="donate.php" method="post">
+							 <input name="fund" type="number" class="no-spinners"><br/>
+							 <input name="projectId" type="hidden" class="no-spinners" value="<?php echo $project['project']?>"><br/>
+							 <br/>
+    <button class="btn btn-primary btn-outline btn-lg" type="submit">Donate</button>			
+    </form>					
+							</p>
 						</div>
+
 					</div>
 				</div>
-				
-				
-				<?
-				
-				}
-?>
-<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					
-					
-				</div>
-			 <?php
-			
-  for($j=18;$j<24;$j++)
-{
-	
-		?>
-							<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images<?php print $array[$j]['path']?>);">
-							<div class="inner">
-								<p>
-									<?
-									echo "<a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."><i class='icon-eye'></i></a>";
-									?>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><?php 
-							echo "<h3><a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."></a>".$array[$j]['name']."</h3>";
-							
-							
-							?></a></h3>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				<?
-				
-				}
-?>
-<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					
-					
-				</div>
-			 <?php
-			
-  for($j=24;$j<25;$j++)
-{
-	
-		?>
-							<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images<?php print $array[$j]['path']?>);">
-							<div class="inner">
-								<p>
-									<?
-									echo "<a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."><i class='icon-eye'></i></a>";
-									?>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><?php 
-							echo "<h3><a class='icon' href=single.php?rajat=".$array[$j]['id']."&pro_name=".urlencode($array[$j]['name'])."></a>".$array[$j]['name']."</h3>";
-							
-							
-							?></a></h3>
-							
-						</div>
-					</div>
-				</div>
-				
-				
-				<?
-				
-				}
-?>
+			</div>
 		</div>
 	</div>
 
@@ -380,7 +270,7 @@ mysql_close();
 					<ul class="fh5co-footer-links">
 						<li><a href="product.php">Shop</a></li>
 						<li><a href="policy.html">Policy</a></li>
-						
+
 					</ul>
 				</div>
 
@@ -388,7 +278,7 @@ mysql_close();
 
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
-				
+
 					<p>
 						<ul class="fh5co-social-icons">
 							<li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -407,7 +297,7 @@ mysql_close();
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -427,4 +317,3 @@ mysql_close();
 
 	</body>
 </html>
-
