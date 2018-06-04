@@ -1,5 +1,7 @@
 package com.teamb9.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teamb9.dto.GlobalResponseDTO;
 import com.teamb9.dto.PasswordDTO;
+import com.teamb9.dto.ProjectDTO;
 import com.teamb9.dto.UserDetailsDTO;
+import com.teamb9.dto.UserFundProjectDTO;
 import com.teamb9.dto.UserResponseDTO;
 import com.teamb9.exception.CustomBadRequestException;
 import com.teamb9.exception.CustomInternalServerException;
@@ -67,25 +71,52 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
 	}
 	
-	@PostMapping("/fundProject")
-	public ResponseEntity<UserResponseDTO> fundProject(
-			@Valid @RequestBody PasswordDTO passwordDTO,
-			@PathVariable(value = "emailId") String emailId
+	@GetMapping("/findFundedProjects/{userId}")
+	public List<UserFundProjectDTO> fundProject(
+			@PathVariable(value = "userId") String userId
 			) 
 			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
-		UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
-		userDetailsDTO = userService.findUserbyEmail(emailId);
-		if(!userDetailsDTO.getPassword().equals(passwordDTO.getPassword())) {
-			throw new CustomBadRequestException("Invalid login");
-		}
-		UserResponseDTO userResponseDTO = new UserResponseDTO();
-		userResponseDTO.setEmailId(userDetailsDTO.getEmail());
-		userResponseDTO.setFname(userDetailsDTO.getFname());
-		userResponseDTO.setFundingDone(userDetailsDTO.getFundingDone());
-		userResponseDTO.setLname(userDetailsDTO.getLname());
-		userResponseDTO.setUserType(userDetailsDTO.getUserType());
-		userResponseDTO.setId(userDetailsDTO.getId());
-		return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
+		return userService.findFundedProjects(userId);
 	}
+	
+	@GetMapping("/{userId}")
+	public ResponseEntity<GlobalResponseDTO> checkEmailAvailability(
+			@PathVariable(value = "userId") String userId
+			) 
+			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
+		userService.checkEmailAvailability(userId);
+		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
+		globalResponseDTO.setMessage("user email was available");
+		return ResponseEntity.status(HttpStatus.OK).body(globalResponseDTO);
+	}
+	
+	@GetMapping("/fundedProject/{userId}")
+	public List<UserFundProjectDTO> findFundedProjects(
+			@PathVariable(value = "userId") String userId
+			) 
+			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
+		return userService.findFundedProjects(userId);
+	}
+	
+//	@PostMapping("/fundProject")
+//	public ResponseEntity<UserResponseDTO> fundProject(
+//			@Valid @RequestBody PasswordDTO passwordDTO,
+//			@PathVariable(value = "emailId") String emailId
+//			) 
+//			throws CustomInternalServerException, CustomNotFoundException, CustomBadRequestException {
+//		UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+//		userDetailsDTO = userService.findUserbyEmail(emailId);
+//		if(!userDetailsDTO.getPassword().equals(passwordDTO.getPassword())) {
+//			throw new CustomBadRequestException("Invalid login");
+//		}
+//		UserResponseDTO userResponseDTO = new UserResponseDTO();
+//		userResponseDTO.setEmailId(userDetailsDTO.getEmail());
+//		userResponseDTO.setFname(userDetailsDTO.getFname());
+//		userResponseDTO.setFundingDone(userDetailsDTO.getFundingDone());
+//		userResponseDTO.setLname(userDetailsDTO.getLname());
+//		userResponseDTO.setUserType(userDetailsDTO.getUserType());
+//		userResponseDTO.setId(userDetailsDTO.getId());
+//		return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
+//	}
 
 }

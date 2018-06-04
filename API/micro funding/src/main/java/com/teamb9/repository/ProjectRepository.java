@@ -12,11 +12,11 @@ import com.teamb9.dto.ProjectDTO;
 @Repository
 public interface ProjectRepository extends JpaRepository<ProjectDTO, Long>  {
 	
-    @Query(value="SELECT * FROM project_details where project_id = :projectId",nativeQuery=true
+    @Query(value="SELECT * FROM project_details where project = :projectId",nativeQuery=true
     	    )
     public ProjectDTO findByProjectId(@Param("projectId")String projectId);
     
-    @Query(value="SELECT * FROM project_details where user_id = :userId",nativeQuery=true
+    @Query(value="SELECT * FROM project_details where user = :userId",nativeQuery=true
     	    )
     public List<ProjectDTO> findByUserId(@Param("userId")String userId);
 }

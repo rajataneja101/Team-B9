@@ -33,7 +33,7 @@ public class UserFundProjectController {
 	public ResponseEntity<GlobalResponseDTO> fundProject(@Valid @RequestBody UserFundProjectDTO userFundProjectDTO,
 			@PathVariable(value = "userId") String userId) 
 			throws CustomInternalServerException, CustomBadRequestException {
-		userFundProjectDTO.setUserId(userId);
+		userFundProjectDTO.setUser(userId);
 		userFundProjectService.fundProject(userFundProjectDTO);
 		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
 		globalResponseDTO.setMessage("user registered successfully");

@@ -22,10 +22,10 @@ public class ProjectDTO {
 	
 	@NotBlank
     @Column(unique=true)
-    private String projectId;
+    private String project;
     
 	@NotBlank
-	private String userId;
+	private String user;
 	
 	@NotBlank
 	private String projectName;
@@ -45,19 +45,19 @@ public class ProjectDTO {
 	}
 
 	public String getProject() {
-		return projectId;
+		return project;
 	}
 
 	public void setProject(String project) {
-		this.projectId = project;
+		this.project = project;
 	}
 
 	public String getUser() {
-		return userId;
+		return user;
 	}
 
 	public void setUser(String user) {
-		this.userId = user;
+		this.user = user;
 	}
 
 	public String getDescription() {

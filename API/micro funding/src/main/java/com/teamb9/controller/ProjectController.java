@@ -2,6 +2,7 @@ package com.teamb9.controller;
 
 import java.util.List;
 
+import org.hibernate.hql.spi.id.global.GlobalTemporaryTableBulkIdStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.teamb9.dto.GlobalResponseDTO;
 import com.teamb9.dto.ProjectDTO;
+import com.teamb9.dto.ProjectStepsDTO;
 import com.teamb9.exception.CustomInternalServerException;
 import com.teamb9.service.ProjectService;
 
@@ -35,7 +37,7 @@ public class ProjectController {
 	
 	@GetMapping("/hello")
 	private String hello() {
-		return "hola project owner";
+		return "hola amigo project owner";
 	}
 	
 	@PostMapping("/register")
@@ -63,5 +65,29 @@ public class ProjectController {
 	private List<ProjectDTO> getAllOwnerProjects(@PathVariable(value = "userId") String userId) 
 			throws CustomInternalServerException {
 		return projectService.fetchAllOwnerProjects(userId);
+	}
+	
+	
+	@GetMapping("/{projectId}")
+	private ResponseEntity<GlobalResponseDTO> checkProjectAvailability(@PathVariable(value = "projectId") String projectId) 
+			throws CustomInternalServerException {
+		try {
+		projectService.checkProjectAvailability(projectId);
+		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
+		globalResponseDTO.setMessage("Project Id already in use");
+		return ResponseEntity.status(HttpStatus.OK).body(globalResponseDTO);
+		}
+		catch(Exception e) {
+			throw new CustomInternalServerException("Project not available");
+		}
+	}
+	
+	@PostMapping("/steps")
+	private ResponseEntity<GlobalResponseDTO> registerProjectSteps(@RequestBody ProjectStepsDTO projectStepsDTO) 
+			throws CustomInternalServerException{
+		projectService.createProjectSteps(projectStepsDTO);
+		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
+		globalResponseDTO.setMessage("Project registered successfully");
+		return ResponseEntity.status(HttpStatus.CREATED).body(globalResponseDTO);
 	}
 }

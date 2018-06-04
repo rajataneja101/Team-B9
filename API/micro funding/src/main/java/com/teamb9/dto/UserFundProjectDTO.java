@@ -19,27 +19,27 @@ public class UserFundProjectDTO {
     private Long id;
 
 	@NotBlank
-	private String projectId;
+	private String project;
 	
-	private String userId;
+	private String user;
 	
 	@NotBlank
 	private String funds;
 
-	public String getProjectId() {
-		return projectId;
+	public String getProject() {
+		return project;
 	}
 
-	public void setProjectId(String projectId) {
-		this.projectId = projectId;
+	public void setProject(String project) {
+		this.project = project;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getUser() {
+		return user;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 	public String getFunds() {
@@ -48,6 +48,16 @@ public class UserFundProjectDTO {
 
 	public void setFunds(String funds) {
 		this.funds = funds;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}	
+	
+	
 	
 }
