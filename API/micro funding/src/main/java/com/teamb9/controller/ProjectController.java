@@ -45,6 +45,7 @@ public class ProjectController {
 	private ResponseEntity<GlobalResponseDTO> registerProject(@RequestBody ProjectDTO projectDTO) 
 			throws CustomInternalServerException{
 		projectService.createProject(projectDTO);
+		logger.info(projectDTO.getGovernment());
 		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
 		globalResponseDTO.setMessage("Project registered successfully");
 		return ResponseEntity.status(HttpStatus.CREATED).body(globalResponseDTO);

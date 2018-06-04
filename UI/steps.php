@@ -14,7 +14,9 @@ $url = $apiUrl."projects/steps";
 $response = $client->request('POST', $url, [ 'body' => json_encode($body), 'headers' => [
     'Content-Type' => 'application/json'
   ] ]);
-
-  echo $response->getStatusCode();
+$code= $response->getStatusCode();
+  if($code == 201){
+    header('location: thanks.php');
+  }
 
 ?>

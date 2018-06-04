@@ -71,19 +71,23 @@ if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>-->
 						</li>
-						<li><a href="about.php">About us</a></li>
+						<li><a href="about.html">About us</a></li>
 						<?php
 						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
 						{ ?>
 							<li><a href="login.php">Login</a></li>
 							<li><a href="registration.php">Register</a></li>
-						<?php } else{ ?>
-							<li><a href="logout.php">Logout</a></li>
-							<?php if($_SESSION['userType'] == 'normal'){ ?>
-							<li><a href="userFundedProjects.php">My Funded Projects</a></li>
-						<?php }
-						} ?>
-						<li><a href="contact.php">Contact us</a></li>
+						<?php } else{ 
+							if($_SESSION['userType'] == 'owner'){
+							?>
+							<li><a href="owner_project.php">My projects</a></li>
+							<li><a href="registerProject.php">Register a project</a></li>
+							<?php } else {?>
+							<li><a href="userFundedProjects.php">My projects</a></li>
+						<?php } ?>
+						<li><a href="logout.php">Logout</a></li>
+						<?php 
+						}?>
 						</ul>
 					</div>
 
@@ -169,8 +173,8 @@ if (isset($_SESSION['userId']) && !empty($_SESSION['userId']))
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.php">About</a></li>
-						<li><a href="contact.php">Contact</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 

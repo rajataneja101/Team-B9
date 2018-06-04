@@ -32,6 +32,7 @@ public class ProjectService {
 	public void createProject(ProjectDTO projectDTO) 
 			throws CustomInternalServerException {
 		try {
+			logger.info(projectDTO.getGovernment());
 			projectRepository.save(projectDTO);
 		} catch(Exception e) {
 			logger.info(e.getMessage());

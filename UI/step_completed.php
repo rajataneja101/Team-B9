@@ -15,6 +15,6 @@ for($i=0;$i<count($stepId,COUNT_NORMAL);$i++){
  $code = $response->getStatusCode();
 echo $response->getStatusCode();
 if($code == 200)
-   echo "yo done";
+   header('location: thanks.php');
 }
 ?>

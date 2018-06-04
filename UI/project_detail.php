@@ -3,19 +3,14 @@ $projectId=$_GET["projectId"];
 session_start();
 include 'constants.php';
 require './vendor/autoload.php';
-
 use GuzzleHttp\Client;
-
 $client = new GuzzleHttp\Client();
 $url = $apiUrl;
 $res = $client->request('GET', $apiUrl."projects/getProjectDetails/".$projectId);
 $project=json_decode($res->getBody(), true);
-
 $stepsResponse = $client->request('GET', $apiUrl."projects/steps/".$projectId);
 $steps =json_decode($stepsResponse->getBody(), true);
-
 ?>
-
 <!DOCTYPE HTML>
 <style>
 	/* hide up/down arrows ("spinners") on input fields marked type=number */
@@ -56,6 +51,14 @@ $steps =json_decode($stepsResponse->getBody(), true);
 
 	</head>
 	<body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="fh5co-loader"></div>
 
 	<div id="page">
@@ -84,24 +87,23 @@ $steps =json_decode($stepsResponse->getBody(), true);
 					</ul>
 					<hr>
 						<ul>
-						<li> <!--class="has-dropdown"-->
-							<a href="projects.php">Projects</a>
-							<!--<ul class="dropdown">
-								<li><a href="single.html">Single Shop</a></li>
-							</ul>-->
-						</li>
-						<li><a href="about.php">About us</a></li>
+						<li><a href="about.html">About us</a></li>
 						<?php
 						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
 						{ ?>
 							<li><a href="login.php">Login</a></li>
 							<li><a href="registration.php">Register</a></li>
-						<?php } else{ ?>
-							<li><a href="logout.php">Logout</a></li>
-							<?php if($_SESSION['userType'] == 'normal'){ ?>
-							<li><a href="userFundedProjects.php">My Funded Projects</a></li>
-						<?php }
-						} ?>
+						<?php } else{ 
+							if($_SESSION['userType'] == 'owner'){
+							?>
+							<li><a href="owner_project.php">My projects</a></li>
+							<li><a href="registerProject.php">Register a project</a></li>
+							<?php } else {?>
+							<li><a href="userFundedProjects.php">My projects</a></li>
+						<?php } ?>
+						<li><a href="logout.php">Logout</a></li>
+						<?php 
+						}?>
 						</ul>
 					</div>
 
@@ -155,7 +157,11 @@ $steps =json_decode($stepsResponse->getBody(), true);
 					</div>
 					<div class="row animate-box">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" >
-							<h2><?php echo $project['projectName']?></h2>
+							<h2><?php echo $project['projectName'];
+													if($project['government'] != null)
+													echo "\nGovernment Project";
+							?></h2>
+							
 						</div>
 					</div>
 				</div>
@@ -175,6 +181,8 @@ $steps =json_decode($stepsResponse->getBody(), true);
 							<div class="fh5co-tab-content tab-content active" data-tab-content="1">
 								<div class="col-md-10 col-md-offset-1">
 									<h2><?php echo $project['projectName']?></h2>
+									<h5><?php if($project['government'] != null)
+													echo "\nGovernment Project"; ?></h5>
 									<p><?php echo $project['description']?></p>
 									<div class="row">
 										<div class="col-md-6">
@@ -224,8 +232,16 @@ $steps =json_decode($stepsResponse->getBody(), true);
 			</div>
 		</div>
 	</div>
-
-
+	<div id="fh5co-product">
+		<div class="container">
+		<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" >
+	<a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/Twitter">Tweets by TwitterDev</a>
+	<div class="fb-page" data-href="https://www.facebook.com/ITS-ME-1434980666753247/" data-tabs="timeline" data-width="300" data-height="400" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/ITS-ME-1434980666753247/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ITS-ME-1434980666753247/">ITS ME</a></blockquote></div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+	</div>
+	</div>
+	
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
 			<div class="row row-pb-md">
@@ -235,8 +251,8 @@ $steps =json_decode($stepsResponse->getBody(), true);
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.php">About</a></li>
-						<li><a href="contact.php">Contact</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 
@@ -263,7 +279,6 @@ $steps =json_decode($stepsResponse->getBody(), true);
 					</p>
 				</div>
 			</div>
-
 		</div>
 	</footer>
 	</div>

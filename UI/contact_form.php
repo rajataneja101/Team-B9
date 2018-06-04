@@ -1,16 +1,5 @@
 <?php
-$fname=$_POST['fname'];
-$lname=$_POST['lname'];
-$email=$_POST['email'];
-$subject=$_POST['subject'];
-$message=$_POST['message'];
-
-mysql_connect("localhost","root","root");
-mysql_select_db("abramo");
-#$query1="insert into contact(fname) values('$fname')";
-$query1="insert into contact values('$fname','$lname','$email','$subject','$message')";
-if(mysql_query($query1))
-{
+session_start();
 	?>
 	<!DOCTYPE HTML>
 <html>
@@ -19,25 +8,6 @@ if(mysql_query($query1))
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>PITSTOP</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-
-
-
-	<!--
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FreeHTML5.co
-
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -47,11 +17,6 @@ if(mysql_query($query1))
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
-
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
-
-	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="css/icomoon.css">
@@ -110,9 +75,22 @@ if(mysql_query($query1))
 								<a href="projects.php">Projects</a>
 								
 							</li>
-							<li><a href="about.php">About us</a></li>
-
-							<li><a href="contact.php">Contact us</a></li>
+						<?php
+						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
+						{ ?>
+							<li><a href="login.php">Login</a></li>
+							<li><a href="registration.php">Register</a></li>
+						<?php } else{ 
+							if($_SESSION['userType'] == 'owner'){
+							?>
+							<li><a href="owner_project.php">My projects</a></li>
+							<li><a href="registerProject.php">Register a project</a></li>
+							<?php } else {?>
+							<li><a href="userFundedProjects.php">My projects</a></li>
+						<?php } ?>
+						<li><a href="logout.php">Logout</a></li>
+						<?php 
+						}?>
 						</ul>
 					</div>
 
@@ -147,8 +125,8 @@ if(mysql_query($query1))
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.php">About</a></li>
-						<li><a href="contact.php">Contact</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 
@@ -202,7 +180,3 @@ if(mysql_query($query1))
 
 	</body>
 </html>
-
-<?php
-}
-?>

@@ -35,6 +35,8 @@ public class ProjectDTO {
 	private int fundingRequired;
 	
 	private int fundingDone;
+	
+	private String government;
 
 	public Long getId() {
 		return id;
@@ -91,6 +93,14 @@ public class ProjectDTO {
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+	
+	public String getGovernment() {
+		return government;
+	}
+
+	public void setGovernment(String governtment) {
+		this.government = governtment;
 	}
 
 }

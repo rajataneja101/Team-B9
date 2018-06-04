@@ -45,55 +45,6 @@ $results=mysql_query($q);
 	    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Want something new?! Upload your own idea</h4>
-        </div>
-        <div class="modal-body">
-
-         <form method="post" action="upload.php"  enctype="multipart/form-data">
-    <table class="table1">
-    <tr>
-        <td><label style="font-size:18px;">Name</label></td>
-        <td width="30"></td>
-        <td><input type="text" name="first_name" placeholder="Name" required /></td>
-    </tr>
-    <tr>
-        <td><label style="font-size:18px; font-family: 'Tangerine';">Email</label></td>
-        <td width="30"></td>
-        <td><input type="email" name="last_name" placeholder="Email" required /></td>
-    </tr>
-
-    <tr>
-        <td><label style="font-size:18px;">Select your Image</label></td>
-        <td width="30"></td>
-        <td><label class="btn btn-default btn-file">
-    Browse <input type="file"  name="image"  style="display: none;">
-</label></td>
-
-    </tr>
-    <tr>
-    <td><a href="policy.html">Upload Policy</a></td>
-    </tr>
-</table>
-    </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button type="submit" name="Submit" class="btn btn-primary">Upload</button>
-    </div>
-</form>
-        </div>
-             </div>
-
-    </div>
-  </div>
-  <script type="text/javascript">
-   setTimeout(function() {
-    $('#myModal').modal();
-}, 10000);
-</script>
 	<div id="page">
     <nav class="fh5co-nav" role="navigation">
   		<div class="container">
@@ -115,7 +66,7 @@ $results=mysql_query($q);
   				<div class="col-md-6 col-xs-6 text-center menu-1">
   				<ul>
   					<div id="content-desktop">
-  				<li><div id="fh5co-logo"><a href="index.php"><h3><strong>PITSTOP</strong></h3></a></div></li>
+  				<li><div id="fh5co-logo"><a href="index.html"><h3><strong>PITSTOP</strong></h3></a></div></li>
   </div>
   				</ul>
   				<hr>
@@ -126,10 +77,23 @@ $results=mysql_query($q);
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>-->
 						</li>
-						<li><a href="about.php">About us</a></li>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="registration.php">Register</a></li>
-						<li><a href="contact.php">Contact us</a></li>
+						<li><a href="about.html">About us</a></li>
+						<?php
+						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
+						{ ?>
+							<li><a href="login.php">Login</a></li>
+							<li><a href="registration.php">Register</a></li>
+						<?php } else{ 
+							if($_SESSION['userType'] == 'owner'){
+							?>
+							<li><a href="owner_project.php">My projects</a></li>
+							<li><a href="registerProject.php">Register a project</a></li>
+							<?php } else {?>
+							<li><a href="userFundedProjects.php">My projects</a></li>
+						<?php } ?>
+						<li><a href="logout.php">Logout</a></li>
+						<?php 
+						}?>
   					</ul>
   				</div>
 
@@ -335,8 +299,8 @@ mysql_close();
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.php">About</a></li>
-						<li><a href="contact.php">Contact</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
 

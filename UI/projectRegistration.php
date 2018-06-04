@@ -13,16 +13,17 @@ $client = new GuzzleHttp\Client();
  $body['fundingDone'] = $_POST["fundingDone"];
  $body['fundingRequired'] = $_POST["fundingRequired"];
  $body['user'] = $_SESSION['userId'];
+ $body['government'] = $_POST['gov'];
  $response = $client->request('POST', $url, [ 'body' => json_encode($body), 'headers' => [
   'Content-Type' => 'application/json'
 ] ]);
  $code = $response->getStatusCode();
 echo $response->getStatusCode();
+
 if($code == 201)
-   header('Location: welcome.php');
+   header('Location: thanks.php');
    if($response['code'] != 201)
 {
-   header('Location: registration.php');
+   header('Location: registerProject.php');
 }
-
 ?>
