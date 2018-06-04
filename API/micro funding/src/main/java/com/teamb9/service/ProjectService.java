@@ -98,5 +98,15 @@ public class ProjectService {
 		}
 	}
 	
+	public List<ProjectStepsRequestDTO> getProjectSteps(String projectId) 
+			throws CustomInternalServerException {
+		try {
+				return projectStepsRepository.getProjectSteps(projectId);			
+		} catch(Exception e) {
+			logger.info(e.getMessage());
+			throw new CustomInternalServerException("Something went wrong");
+		}
+	}
+	
 
 }
