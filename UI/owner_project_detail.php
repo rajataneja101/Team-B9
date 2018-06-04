@@ -198,20 +198,34 @@ $steps =json_decode($stepsResponse->getBody(), true);
 
 							<div class="fh5co-tab-content tab-content" data-tab-content="3">
 								<div class="col-md-10 col-md-offset-1">
+									<form action="step_completed.php" method="post">
 									<?php 
 									for($i=0;$i<count($steps,COUNT_NORMAL);$i++){
-                                    echo "<h4>".$steps[$i]['projectSteps']."</h4>";
+									echo "<p>".$steps[$i]['projectSteps']."-".$steps[$i]['status'];
+									if($steps[$i]['status'] != 'Completed')
+									echo "- <input type='checkbox' name='stepsCompleted[]' value=".$steps[$i]['id']." />Completed?</p>";
                                     }
-                                    ?>
+									?>
+									<br/>
+									<input type="submit" class="btn" value="Completed?"><br/>
+									</form>
                                     <form action="add_project_steps.php" method="post">
                                         <input type="hidden" name="projectId" value=<?php echo $project['project'] ?> />
-                                        <input type="submit" value="Go to Google" />
+                                        <input class="btn" type="submit" value="Add more" />
                                     </form>
 								</div>
 							</div>
 
 
 						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/><br/>
+	<div id="fh5co-product">
+						<div class="container">
+						<div class="row">
 						<div class="row animate-box">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" >
 							<p>
@@ -223,13 +237,10 @@ $steps =json_decode($stepsResponse->getBody(), true);
     </form>					
 							</p>
 						</div>
-
+								</div>
+								</div>
+								</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">

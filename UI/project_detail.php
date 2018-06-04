@@ -56,7 +56,6 @@ $steps =json_decode($stepsResponse->getBody(), true);
 
 	</head>
 	<body>
-
 	<div class="fh5co-loader"></div>
 
 	<div id="page">
@@ -200,13 +199,11 @@ $steps =json_decode($stepsResponse->getBody(), true);
 								<div class="col-md-10 col-md-offset-1">
 									<?php 
 									for($i=0;$i<count($steps,COUNT_NORMAL);$i++){
-									echo "<h4>".$steps[$i]['projectSteps']."</h4>";
+									echo "<p>".$steps[$i]['projectSteps']."-".$steps[$i]['status']."</p>";
 									}
 									?>
 								</div>
 							</div>
-
-
 						</div>
 						<div class="row animate-box">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading" >
@@ -219,7 +216,6 @@ $steps =json_decode($stepsResponse->getBody(), true);
     </form>					
 							</p>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -272,8 +268,6 @@ $steps =json_decode($stepsResponse->getBody(), true);
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-
-
 	<script src="js/jquery.min.js"></script>
 	
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -291,4 +285,15 @@ $steps =json_decode($stepsResponse->getBody(), true);
 	<script src="js/main.js"></script>
 
 	</body>
+
+	<script>
+
+			var btn = document.getElementById("checkLogin");
+			btn.onclick = function() {
+    modal.style.display = "block";
+}
+	<?php if($_SESSION['userType']) {?>
+
+	<?php } ?>
+	</script>
 </html>

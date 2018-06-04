@@ -97,4 +97,13 @@ public class ProjectController {
 			throws CustomInternalServerException{
 		return projectService.getProjectSteps(projectId);
 	}
+	
+	@PostMapping("/steps/{stepId}")
+	private ResponseEntity<GlobalResponseDTO> setStatusToCompleted(@PathVariable(value = "stepId") Long stepId) 
+			throws CustomInternalServerException{
+		projectService.updateProjectStatusToCompleted(stepId);
+		GlobalResponseDTO globalResponseDTO = new GlobalResponseDTO();
+		globalResponseDTO.setMessage("Step updated successfully");
+		return ResponseEntity.status(HttpStatus.OK).body(globalResponseDTO);
+	}
 }

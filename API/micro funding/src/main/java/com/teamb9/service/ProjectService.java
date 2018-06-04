@@ -80,6 +80,7 @@ public class ProjectService {
 				ProjectStepsRequestDTO projectStepsRequestDTO = new ProjectStepsRequestDTO();
 				projectStepsRequestDTO.setProjectId(projectStepsDTO.getProjectId());
 				projectStepsRequestDTO.setProjectSteps(array);
+				projectStepsRequestDTO.setStatus("In progress");
 				projectStepsRepository.save(projectStepsRequestDTO);
 			}
 			
@@ -102,6 +103,16 @@ public class ProjectService {
 			throws CustomInternalServerException {
 		try {
 				return projectStepsRepository.getProjectSteps(projectId);			
+		} catch(Exception e) {
+			logger.info(e.getMessage());
+			throw new CustomInternalServerException("Something went wrong");
+		}
+	}
+	
+	public void updateProjectStatusToCompleted(Long stepId) 
+			throws CustomInternalServerException {
+		try {
+				projectStepsRepository.updateProjectStatusToCompleted(stepId);			
 		} catch(Exception e) {
 			logger.info(e.getMessage());
 			throw new CustomInternalServerException("Something went wrong");

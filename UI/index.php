@@ -26,58 +26,6 @@ $var=json_decode($res->getBody(), true);
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	</head>
 	<body>
-
-	     <!-- <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Want something new?! Upload your own idea</h4>
-        </div>
-        <div class="modal-body">
-
-         <form method="post" action="upload.php"  enctype="multipart/form-data">
-    <table class="table1">
-    <tr>
-        <td><label style="font-size:18px;">Name</label></td>
-        <td width="30"></td>
-        <td><input type="text" name="first_name" placeholder="Name" required /></td>
-    </tr>
-    <tr>
-        <td><label style="font-size:18px; font-family: 'Tangerine';">Email</label></td>
-        <td width="30"></td>
-        <td><input type="email" name="last_name" placeholder="Email" required /></td>
-    </tr>
-
-    <tr>
-        <td><label style="font-size:18px;">Select your Image</label></td>
-        <td width="30"></td>
-        <td><label class="btn btn-default btn-file">
-    Browse <input type="file"  name="image"  style="display: none;">
-</label></td>
-
-    </tr>
-    <tr>
-    <td><a href="policy.html">Upload Policy</a></td>
-    </tr>
-</table>
-    </div>
-    <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button type="submit" name="Submit" class="btn btn-primary">Upload</button>
-    </div>
-</form>
-        </div>
-             </div>
-
-    </div>
-  </div> -->
-  <!-- <script type="text/javascript">
-   setTimeout(function() {
-    $('#myModal').modal();
-}, 10000);
-</script> -->
-
 	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
@@ -114,7 +62,10 @@ $var=json_decode($res->getBody(), true);
 							<li><a href="registration.php">Register</a></li>
 						<?php } else{ ?>
 							<li><a href="logout.php">Logout</a></li>
-						<?php } ?>
+							<?php if($_SESSION['userType'] == 'normal'){ ?>
+							<li><a href="userFundedProjects.php">My Funded Projects</a></li>
+						<?php }
+						} ?>
 					</ul>
 				</div>
 
