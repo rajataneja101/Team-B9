@@ -200,9 +200,13 @@ $steps =json_decode($stepsResponse->getBody(), true);
 								<div class="col-md-10 col-md-offset-1">
 									<?php 
 									for($i=0;$i<count($steps,COUNT_NORMAL);$i++){
-									echo "<h4>".$steps[$i]['projectSteps']."</h4>";
-									}
-									?>
+                                    echo "<h4>".$steps[$i]['projectSteps']."</h4>";
+                                    }
+                                    ?>
+                                    <form action="add_project_steps.php" method="post">
+                                        <input type="hidden" name="projectId" value=<?php echo $project['project'] ?> />
+                                        <input type="submit" value="Go to Google" />
+                                    </form>
 								</div>
 							</div>
 
