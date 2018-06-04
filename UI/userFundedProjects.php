@@ -56,7 +56,7 @@ $project=json_decode($res->getBody(), true);
 					<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<div id="content-desktop">
-					<li><div id="fh5co-logo"><a href="index.html"><h3><strong>PITSTOP</strong></h3></a></div></li>
+					<li><div id="fh5co-logo"><a href="index.php"><h3><strong>PITSTOP</strong></h3></a></div></li>
 	</div>
 					</ul>
 					<hr>
@@ -67,9 +67,10 @@ $project=json_decode($res->getBody(), true);
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>-->
 						</li>
-						<li><a href="about.html">About us</a></li>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="registration.php">Register</a></li>
+						<li><a href="about.php">About us</a></li>
+						<li><a href="contact.php">Contact us</a></li>
+						<li><a href="logout.php">Logout</a></li>
+						<li><a href="userFundedProjects.php">My Funded Projects</a></li>
 						</ul>
 					</div>
 
@@ -112,8 +113,8 @@ $project=json_decode($res->getBody(), true);
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="about.php">About</a></li>
+						<li><a href="contact.php">Contact</a></li>
 					</ul>
 				</div>
 

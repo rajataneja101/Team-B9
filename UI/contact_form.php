@@ -110,9 +110,9 @@ if(mysql_query($query1))
 								<a href="projects.php">Projects</a>
 								
 							</li>
-							<li><a href="about.html">About us</a></li>
+							<li><a href="about.php">About us</a></li>
 
-							<li><a href="contact.html">Contact us</a></li>
+							<li><a href="contact.php">Contact us</a></li>
 						</ul>
 					</div>
 
@@ -147,8 +147,8 @@ if(mysql_query($query1))
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="about.php">About</a></li>
+						<li><a href="contact.php">Contact</a></li>
 					</ul>
 				</div>
 

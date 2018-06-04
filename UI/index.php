@@ -54,7 +54,7 @@ $var=json_decode($res->getBody(), true);
 						<li>
 							<a href="projects.php">Projects</a>
 						</li>
-						<li><a href="about.html">About us</a></li>
+						<li><a href="about.php">About us</a></li>
 						<?php
 						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
 						{ ?>
@@ -260,8 +260,8 @@ $var=json_decode($res->getBody(), true);
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="about.html">About</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="about.php">About</a></li>
+						<li><a href="contact.php">Contact</a></li>
 					</ul>
 				</div>
 
