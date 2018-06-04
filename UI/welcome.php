@@ -58,10 +58,10 @@
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>-->
 						</li>
-						<li><a href="about.html">About us</a></li>
+						<li><a href="about.php">About us</a></li>
 						<li><a href="login.php">Login</a></li>
 						<li><a href="registration.php">Register</a></li>
-						<li><a href="contact.html">Contact us</a></li>
+						<li><a href="contact.php">Contact us</a></li>
 						</ul>
 					</div>
 

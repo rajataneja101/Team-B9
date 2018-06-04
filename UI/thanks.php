@@ -58,7 +58,7 @@ session_start();
 						<li>
 							<a href="projects.php">Projects</a>
 						</li>
-						<li><a href="about.html">About us</a></li>
+						<li><a href="about.php">About us</a></li>
 						<?php
 						if (!isset($_SESSION['userId']) && empty($_SESSION['userId']))
 						{ ?>
