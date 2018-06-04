@@ -10,6 +10,6 @@ $sql = "INSERT INTO newletter (email)
 VALUES ('$email')";
  
 $conn->exec($sql);
-echo "<script>alert('Successfully Added!!!'); window.location='index.html'</script>";
+echo "<script>alert('Successfully Added!!!'); window.location='index.php'</script>";
 }
 ?> 

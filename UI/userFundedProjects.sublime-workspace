@@ -1,0 +1,210 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"input",
+				"inputtxt"
+			],
+			[
+				"max-",
+				"max-width\tproperty"
+			],
+			[
+				"padding",
+				"padding-top\tproperty"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/_xampp/htdocs/Team-B9/UI"
+	],
+	"file_history":
+	[
+		"/C/_xampp/htdocs/BackEnd/phpFolder/add1.html",
+		"/C/_xampp/htdocs/BackEnd/phpFolder/add.html",
+		"/C/_xampp/htdocs/Team-B9/UI/about.html",
+		"/C/_xampp/htdocs/Team-B9/UI/contact.html",
+		"/C/_xampp/htdocs/Team-B9/UI/composer.json",
+		"/C/_xampp/htdocs/Team-B9/UI/constants.php",
+		"/C/_xampp/htdocs/Team-B9/UI/index.php",
+		"/C/_xampp/htdocs/Team-B9/UI/login.php",
+		"/C/_xampp/htdocs/Team-B9/UI/logout.php",
+		"/C/_xampp/htdocs/Team-B9/UI/welcome.php",
+		"/C/_xampp/htdocs/Team-B9/UI/signUp.php",
+		"/C/_xampp/htdocs/Team-B9/UI/registration.php",
+		"/C/_xampp/htdocs/Team-B9/UI/project.php",
+		"/C/_xampp/htdocs/Team-B9/UI/contact_form.php",
+		"/C/_xampp/htdocs/graph.html",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/startbootstrap-sb-admin-gh-pages/charts.html",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/startbootstrap-sb-admin-gh-pages/js/sb-admin-charts.min.js",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/startbootstrap-sb-admin-gh-pages/vendor/chart.js/Chart.bundle.min.js",
+		"/C/_xampp/htdocs/BackEnd/phpFolder/sign.php",
+		"/C/_xampp/htdocs/BackEnd/index.php",
+		"/C/_xampp/htdocs/BackEnd/phpFolder/register.html",
+		"/C/_xampp/htdocs/BackEnd/phpFolder/signIn.php",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/pages/productList.php",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/pages/gallery.html",
+		"/C/_xampp/htdocs/Abramo-Nogcci/product.php",
+		"/C/_xampp/htdocs/BackEnd/phpFolder/login.php",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/index.html",
+		"/C/_xampp/htdocs/Team-B9/UI/Maxisonix Free Website Template - Free-CSS.com/maxisonix/productList.php",
+		"/C/_xampp/htdocs/BackEnd/phpFolder/productList.php",
+		"/C/xampp/htdocs/selvi/index.php"
+	],
+	"find":
+	{
+		"height": 50.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "userFundedProjects.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 195.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
