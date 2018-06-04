@@ -49,7 +49,7 @@ $var=json_decode($res->getBody(), true);
   				<div class="col-md-6 col-xs-6 text-center menu-1">
   				<ul>
   					<div id="content-desktop">
-  				<li><div id="fh5co-logo"><a href="index.html"><h3><strong>PITSTOP</strong></h3></a></div></li>
+  				<li><div id="fh5co-logo"><a href="index.php"><h3><strong>PITSTOP</strong></h3></a></div></li>
   </div>
   				</ul>
   				<hr>
